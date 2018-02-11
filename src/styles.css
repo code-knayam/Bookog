@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-color: rgba(201, 53, 53, .82);
+}
+h1, h2, h3, h4, h5, h6, p, a, span {
+    font-family: Helvetica;
+}
