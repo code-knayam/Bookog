@@ -1,0 +1,65 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-3">
+
+        <div class="content">
+          <h3>Register</h3>
+          <h4>Fill the below details to join the community</h4>
+
+          <div class="form-container">
+            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+
+              <!-- Username Field -->
+              <div class="form-group">
+                <input type="text" class="form-control" [ngClass]="signUpForm.controls.username.dirty && signUpForm.controls.username.invalid ? 'invalid-input' : 'valid-input' "
+                  name="username" autocomplete="username" formControlName="username">
+                <label [ngClass]="signUpForm.controls.username.value != '' && signUpForm.controls.username.dirty ?'active-label':'inactive-label' "
+                  for="username">Username</label>
+                <span class="error" *ngIf="signUpForm.controls.username.dirty && signUpForm.controls.username.invalid && signUpForm.controls.username.errors.required == true">Username is required.</span>
+                <span class="error" *ngIf="signUpForm.controls.username.dirty && signUpForm.controls.username.invalid && signUpForm.controls.username.errors.pattern">Only alphabets are allowed.</span>
+              </div>
+
+              <!-- Email Field -->
+              <div class="form-group">
+                <input type="email" class="form-control" [ngClass]="signUpForm.controls.email.dirty && signUpForm.controls.email.invalid ? 'invalid-input' : 'valid-input' "
+                  name="email" autocomplete="email" formControlName="email">
+                <label [ngClass]="signUpForm.controls.email.value != '' && signUpForm.controls.email.dirty ?'active-label':'inactive-label' "
+                  for="email">Email</label>
+                <span class="error" *ngIf="signUpForm.controls.email.dirty && signUpForm.controls.email.invalid && signUpForm.controls.email.errors.required == true">Email is required.</span>
+                <span class="error" *ngIf="signUpForm.controls.email.dirty && signUpForm.controls.email.invalid && signUpForm.controls.email.errors.pattern">Invalid Email.</span>
+              </div>
+
+              <div class="row">
+
+              
+              <!-- Password Field -->
+              <div class="form-group col-md-6">
+                <input type="password" class="form-control" [ngClass]="signUpForm.controls.password.dirty && signUpForm.controls.password.invalid ? 'invalid-input' : 'valid-input' "
+                  name="password" autocomplete="password" formControlName="password">
+                <label [ngClass]="signUpForm.controls.password.value != '' && signUpForm.controls.password.dirty ?'active-label':'inactive-label' "
+                  for="password">Password</label>
+                <span class="error" *ngIf="signUpForm.controls.password.dirty && signUpForm.controls.password.invalid && signUpForm.controls.password.errors.required == true">Password is required.</span>
+                <span class="error" *ngIf="signUpForm.controls.password.dirty && signUpForm.controls.password.invalid && signUpForm.controls.password.errors.pattern">Only alphabets are allowed.</span>
+              </div>
+
+              <!-- Confirm Password Field -->
+              <div class="form-group  col-md-6">
+                <input type="password" class="form-control" [ngClass]="signUpForm.controls.confirmPassword.dirty && signUpForm.controls.confirmPassword.invalid ? 'invalid-input' : 'valid-input' "
+                  name="confirmPassword" autocomplete="confirmPassword" formControlName="confirmPassword">
+                <label [ngClass]="signUpForm.controls.confirmPassword.value != '' && signUpForm.controls.confirmPassword.dirty ?'active-label':'inactive-label' "
+                  for="confirmPassword">Confirm Password</label>
+                <span class="error" *ngIf="signUpForm.controls.confirmPassword.dirty && signUpForm.controls.confirmPassword.invalid && signUpForm.controls.confirmPassword.errors.required == true">Password is required.</span>
+                <span class="error" *ngIf="signUpForm.controls.confirmPassword.dirty && signUpForm.controls.confirmPassword.invalid && signUpForm.controls.confirmPassword.errors.pattern">Only alphabets are allowed.</span>
+              </div>
+            </div>
+
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
