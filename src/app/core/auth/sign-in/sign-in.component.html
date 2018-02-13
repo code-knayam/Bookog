@@ -1,10 +1,81 @@
 <div class="jumbotron">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 offset-2">
+        <div class="col-md-6 offset-1">
   
           <div class="content">
-            <h3>Sign in</h3>
+            <h3>Welcome Back</h3>
+            <h4>Sign In to continue your reading experience.</h4>
+  
+            <!-- Form Container -->
+            <div class="form-container">
+              <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+                
+                <div class="row">                
+                  <!-- Email Field -->
+                  <div class="form-group col-md-6">
+                    <input 
+                      type="email" 
+                      class="form-control" 
+                      [ngClass]="signInForm.controls.email.dirty && signInForm.controls.email.invalid ? 'invalid-input' : 'valid-input' "
+                      name="email" 
+                      autocomplete="email" 
+                      formControlName="email"
+                      email>
+                    <label 
+                      [ngClass]="signInForm.controls.email.value != '' && signInForm.controls.email.dirty ?'active-label':'inactive-label' "
+                      for="email">
+                      Email
+                    </label>
+                    <span 
+                      class="error" 
+                      *ngIf="signInForm.controls.email.dirty && signInForm.controls.email.invalid && signInForm.controls.email.errors.required == true">
+                      Email is required.
+                    </span>
+                    <span 
+                      class="error" 
+                      *ngIf="signInForm.controls.email.dirty && signInForm.controls.email.invalid && signInForm.controls.email.errors.pattern">
+                      Invalid Email.
+                    </span>
+                  </div>
+    
+                  <!-- Password Field -->
+                  <div class="form-group col-md-6">
+                    <input 
+                      type="password" 
+                      class="form-control" 
+                      [ngClass]="signInForm.controls.password.dirty && signInForm.controls.password.invalid ? 'invalid-input' : 'valid-input' "
+                      name="password" 
+                      autocomplete="password" 
+                      formControlName="password">
+                    <label 
+                      [ngClass]="signInForm.controls.password.value != '' && signInForm.controls.password.dirty ?'active-label':'inactive-label' "
+                      for="password">
+                      Password
+                    </label>
+                    <span 
+                      class="error" 
+                      *ngIf="signInForm.controls.password.dirty && signInForm.controls.password.invalid && signInForm.controls.password.errors.required == true">
+                      Password is required.
+                    </span>
+                  </div>  
+                </div>
+                  
+                <div class="submit-group">
+                  <button type="submit" class="btn submit-btn" [disabled]="!signInForm.valid" >Let's Start</button>
+                </div>
+  
+                <div class="extra-msg-group">
+                  <p>
+                    New to Bookog ?
+                    <a routerLink="/signUp">Sign Up</a>
+                    now
+                  </p>
+                </div>
+  
+              </form>            
+            </div>          
+  
           </div>
   
         </div>
