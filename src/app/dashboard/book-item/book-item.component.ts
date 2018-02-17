@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookItemComponent implements OnInit {
 
+  isOpen = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggleMenu() {
+    this.isOpen = !this.isOpen;
+  }
+
+  onDelete() {
+    console.log('delete clicked');
+  }
 }

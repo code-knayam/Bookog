@@ -1,3 +1,50 @@
-<p>
-  book-item works!
-</p>
+<div class="book-item">
+
+  <!-- Book Image -->
+  <div class="upper-section">
+    <img src="assets/thumbnail.png" alt="" class="img-responsive">
+  </div>
+
+  <!-- Book Details -->
+  <div class="lower-section" [ngClass]="isOpen ? 'hide-content' : ''">    
+    <h4 title="harry potter and the order of phoenixharry potter and the order of phoenixharry potter and the order of phoenixharry potter and the order of phoenixharry potter and the order of phoenix">harry potter and the order of phoenixharry potter and the order of phoenixharry potter and the order of phoenixharry potter and the order of phoenixharry potter and the order of phoenix</h4>
+    <div class="content">
+      <span>
+        <i class="fa fa-user"></i>
+        &nbsp;
+        J k Rowling
+      </span>
+      <span>
+        <i class="fa fa-clock"></i>
+        &nbsp;
+        1 Day Ago
+      </span>
+      <br>
+      <span>
+        <i class="fa fa-file-alt"></i>
+        &nbsp;
+        400 pages
+      </span>
+    </div>
+  </div>
+
+  <!-- Menu -->
+  <div class="menu-section" [ngClass]="isOpen ? 'show-menu' : ''">
+    <div class="menu-toggle">
+        <span class="fa fa-ellipsis-h" (click)="toggleMenu()"></span>      
+    </div>
+    <div class="menu">
+      <ul class="menu-items">
+        <li class="menu-item" (click)="onDelete()">
+          <span class="fa fa-trash-alt"></span>
+        </li>
+        <li class="menu-item">
+          <a class="fa fa-edit"></a>
+        </li>
+        <li class="menu-item">
+          <a class="fa fa-share-square"></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
