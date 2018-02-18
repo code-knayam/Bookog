@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
+  isOpenNav = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onToggleNav() {
+    this.isOpenNav = !this.isOpenNav;
+  }
 }

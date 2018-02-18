@@ -1,0 +1,101 @@
+.nav {
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+    background: rgba(254, 254, 254, 1);
+    margin: 0;
+    top: 0;
+    left: 0;
+    box-shadow: 0 5px 10px rgba(1, 1, 1, 0.16);
+}
+.nav .brand-container {
+    height: auto;
+    width: auto;
+    margin: 0 50px;
+}
+.nav .brand-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.nav .nav-toggle {
+    position: absolute;
+    right: 0;
+    margin-right: 13px;
+    margin-top: 13px;
+    padding: 15px 2px;
+    height: 40px;
+    width: 30px;
+    cursor: pointer;
+}
+.nav .nav-toggle .nav-toggle-btn {
+    width: 25px;
+    height: 2px;
+    background: #111;
+    position: relative;        
+    transition: .5s;
+    box-shadow: 0 1px 5px #555;
+}
+.nav .nav-toggle .nav-toggle-btn::before,
+.nav .nav-toggle .nav-toggle-btn::after {
+    content: "";    
+    height: 2px;    
+    width: 25px;
+    position: absolute;
+    background: #111;
+    transition: .5s;      
+    box-shadow: 0 1px 5px #555;      
+}
+.nav .nav-toggle .nav-toggle-btn::before {
+    top: -8px;
+}
+.nav .nav-toggle .nav-toggle-btn::after {
+    top: 8px;
+}
+.nav .nav-toggle.open-nav .nav-toggle-btn {
+    background: transparent;
+    box-shadow: none;
+}
+.nav .nav-toggle.open-nav .nav-toggle-btn::before {
+    transform: rotateZ(45deg);
+    top: 0;
+}
+.nav .nav-toggle.open-nav .nav-toggle-btn::after {
+    transform: rotateZ(135deg);
+    top: 0;
+}
+
+.nav .nav-item-container {
+    position: absolute;
+    top: 60px;
+    right: -270px;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    width: 270px;
+    margin: 0;        
+    height: 700px;
+    padding: 15px 2px;
+    background: linear-gradient( rgba(255, 255, 255, .96), rgba(55, 67, 67, 0.96));    
+    box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.16);
+    transition: .5s;
+    z-index: 999;
+}
+.nav .nav-item-container.open-nav-container {
+    right: 0;
+}
+.nav .nav-item-container .nav-items {
+    margin: 0;
+    padding: 0;
+}
+.nav .nav-item-container .nav-items .nav-item {
+    list-style: none;
+    margin: 0;    
+    padding: 15px 3px 15px 30px;
+    font-size: 15px;
+    border-bottom: 1px solid #111;
+}
+.nav .nav-item-container .nav-items .nav-item:first-child {
+    padding: 40px 3px 40px 30px;
+}

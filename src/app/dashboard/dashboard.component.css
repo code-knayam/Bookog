@@ -1,0 +1,6 @@
+.dashboard {
+    background: rgba(221, 221, 221, 0.6);
+    width: 100%;
+    min-height: 700px;
+    padding-top: 100px;
+}

@@ -1,3 +1,42 @@
-<p>
-  menu works!
-</p>
+<div class="nav">
+
+  <div class="brand-container">
+    <a href="">
+      <img src="assets/logo.png" alt="">
+    </a>
+  </div>
+
+  <div 
+    class="nav-toggle" 
+    (click)="onToggleNav()"
+    [ngClass]="isOpenNav ? 'open-nav' : '' ">
+    <div class="nav-toggle-btn"></div>
+  </div>
+
+  <div 
+    class="nav-item-container"
+    [ngClass]="isOpenNav ? 'open-nav-container' : '' ">
+    <ul class="nav-items">
+      <li class="nav-item">
+        <img 
+          src="assets/logo.png" 
+          alt=""> 
+          Hi Mayank
+      </li>
+      <li class="nav-item">
+        Home
+      </li>
+      <li class="nav-item">
+        Add a Book
+      </li>
+      <li class="nav-item">
+        View all Books
+      </li>
+      <li class="nav-item">
+        Log Out
+      </li>
+    </ul>
+  </div>
+</div>
+  
+

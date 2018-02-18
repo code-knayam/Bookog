@@ -2,7 +2,7 @@
     height: 300px;
     width: 320px;
     background: rgba(255, 255, 255, 0.8);
-    margin: 50px 480px;
+    margin: 30px;
     box-shadow: 4px 20px 20px rgba(1, 1, 1, 0.16);
     transition: .5s;
     overflow: hidden;
@@ -30,14 +30,14 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;    
-    padding: 15px;    
+    padding: 15px;   
+    padding-bottom: 5px; 
 }
 .book-item .lower-section .content {
     padding: 10px 15px;
     z-index: 1;
 }
 .book-item .lower-section.hide-content .content {
-    opacity: 0.8;
     filter: blur(3px);
 }
 .book-item .lower-section .content span {
@@ -62,19 +62,25 @@
 .book-item .menu-section .menu-toggle {
     text-align: right;
     padding: 5px 15px;
-    margin-top: -35px;  
-    transition: .3s;
+    margin-top: -30px;      
+    color: #aaaaaa;
 }
 .book-item .menu-section .menu-toggle span {
     cursor: pointer;
 }
+.book-item .menu-section.show-menu .menu-toggle span {
+    transform: rotateX(180deg);
+}
 
 .book-item .menu-section .menu {
-    background: rgba(254, 254, 254, 0.2);    
+    background: transparent;   
     height: 100%;    
     margin-top: 0;
     padding-top: 15px;    
     z-index: 10;
+}
+.book-item .menu-section.show-menu .menu {
+    box-shadow: -2px 0 10px #999; 
 }
 .book-item .menu-section .menu .menu-items .menu-item {
     list-style: none;
@@ -88,7 +94,7 @@
     margin: 0 15px;
     margin-top: 80px;
     border-radius: 40px;    
-    background: linear-gradient( rgba(255, 67, 67, 0.62), rgba(255, 255, 255, .62));
+    background: linear-gradient( rgba(255, 67, 67, 0.82), rgba(255, 255, 255, .62));
     z-index: 10;
     cursor: pointer;
     box-shadow: 0 5px 10px rgba(1, 1, 1, 0.16);
@@ -96,7 +102,4 @@
 }
 .book-item .menu-section.show-menu .menu .menu-items .menu-item {
     margin-top: 0;
-}
-.book-item .menu-section .menu .menu-items .menu-item span {
-    z-index: 99;
 }
