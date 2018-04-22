@@ -37,6 +37,7 @@
     text-align: left;
 }
 .jumbotron .content .form-container .form-group .form-control {
+    position: relative;
     height: 30px;
     border: none;
     box-shadow: none;
@@ -46,6 +47,7 @@
     color: rgba(256, 256, 256, .59);
     font-weight: lighter;
     font-size: 15px;
+    z-index: 2;
 }
 .jumbotron .content .form-container .form-group .valid-input {
     border-bottom: 1px solid rgba(256, 256, 256, 0.16);
@@ -61,6 +63,7 @@
     position: absolute;  
     padding: 10px 0;
     font-weight: lighter;
+    z-index: 1;
     color: rgba(256, 256, 256, .49);
     transition: .2s ease-in;
     -moz-transition: .2s ease-in;

@@ -1,0 +1,81 @@
+.jumbotron {
+  height: 600px;
+  margin: 0;
+  background: url('../../../assets/AddBookBackground.png') center center no-repeat;
+  background-size: cover;
+  border-radius: 0;
+}
+
+.jumbotron .heading {
+  padding: 20px 30px;
+}
+
+.jumbotron .heading h3 {
+  color: rgba(255, 230, 230, 1);
+  font-size: 33px;
+  font-weight: lighter;
+  text-transform: capitalize;
+}
+
+.jumbotron .form-container {
+  padding: 10px 30px;
+}
+
+.jumbotron .form-container .form-group {
+  min-height: 60px;
+}
+
+.jumbotron .form-container .form-group .form-control {
+  position: relative;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0 8px;
+  z-index: 2;
+}
+
+.jumbotron .form-container .form-group label {
+  position: absolute;
+  top: 0;
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255, 230, 230, .91);
+  padding: 0 8px;
+  margin: 0;
+  transition: .5s;
+  z-index: 0;
+}
+
+.jumbotron .form-container .form-group .form-control:focus+label {
+  margin-top: -30px;
+  padding: 0;
+}
+
+.jumbotron .form-container .form-group .error {
+  transition: .5s ease-in;
+  -moz-transition: .5s ease-in;
+  -webkit-transition: .5s ease-in;
+  -o-transition: .5s ease-in;
+  margin: 0;
+  padding: 0;
+  color: rgb(156, 62, 62);
+  font-size: 13px;
+  font-weight: 300;
+  text-shadow: 0 0 1px #fff;
+}
+
+button {
+    margin-top: 20px;
+    width: 200px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 0;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Book } from '../../shared/book.model';
 
 @Component({
   selector: 'app-book-item',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookItemComponent implements OnInit {
 
+  @Input() bookItem: Book;
   isOpen = false;
 
   constructor() { }

@@ -2,29 +2,34 @@
 
   <!-- Book Image -->
   <div class="upper-section">
-    <img src="assets/thumbnail.png" alt="" class="img-responsive">
+    <img src="{{bookItem.bookImageURL}}" alt="{{bookItem.bookTitle}}" class="img-responsive">
   </div>
 
   <!-- Book Details -->
   <div class="lower-section" [ngClass]="isOpen ? 'hide-content' : ''">    
-    <h4 title="harry potter and the order of phoenix">harry potter and the order of phoenix extra text some more of it even nore</h4>
+    <h4 title="{{bookItem.bookTitle}}">{{bookItem.bookTitle}}</h4>
     <div class="content">
-      <span>
+      <p>
         <i class="fa fa-user"></i>
         &nbsp;
-        J k Rowling
-      </span>
-      <span>
+        {{bookItem.bookAuthor}}
+      </p>
+      <p>
         <i class="fa fa-clock"></i>
         &nbsp;
-        1 Day Ago
-      </span>
+        {{bookItem.bookTimestamp | date}}
+      </p>
       <br>
-      <span>
+      <p>
         <i class="fa fa-file-alt"></i>
         &nbsp;
-        400 pages
-      </span>
+        {{bookItem.bookPages}} pages
+      </p>
+      <p>
+        <i class="fa fa-star"></i>
+        &nbsp;
+        {{bookItem.bookRating}} / 5
+      </p>
     </div>
   </div>
 

@@ -20,20 +20,41 @@
       <li class="nav-item">
         <img 
           src="assets/logo.png" 
-          alt=""> 
+          alt=""
+          class="img-thumbnail img-responsive profile-img"> 
           Hi Mayank
       </li>
-      <li class="nav-item">
-        Home
+      <li class="nav-item" routerLinkActive="nav-item-active">
+        <a routerLink="/dashboard/home">
+          <p>
+            <i class="fa fa-home"></i>
+            Home
+          </p>
+        </a>
       </li>
-      <li class="nav-item">
-        Add a Book
+      <li class="nav-item" routerLinkActive="nav-item-active">
+        <a routerLink="/dashboard/addBook">
+          <p>
+            <i class="fa fa-plus-square"></i>
+            Add a Book
+          </p>
+        </a>
       </li>
-      <li class="nav-item">
-        View all Books
+      <li class="nav-item" routerLinkActive="nav-item-active">
+        <a routerLink="/dashboard/collection">
+          <p>
+            <i class="fa fa-th-large"></i>
+            View all Books
+          </p>
+        </a>
       </li>
-      <li class="nav-item">
-        Log Out
+      <li class="nav-item" routerLinkActive="nav-item-active">
+        <a routerLink="/logOut">
+          <p>
+            <i class="fa fa-sign-out-alt"></i>
+            Log Out
+          </p>
+        </a>
       </li>
     </ul>
   </div>

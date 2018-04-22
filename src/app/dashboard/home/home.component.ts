@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from '../../shared/book.model';
+import { DataStorageService } from '../data-storage.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  recentBooks: Book[];
+  topBooks: Book[];
+  booksRead;
+
+  constructor(private dataStorageSerive: DataStorageService) {}
 
   ngOnInit() {
+    this.recentBooks = this.dataStorageSerive.getRecentBooks();
+    this.topBooks = this.dataStorageSerive.getTopBooks();
+    this.booksRead = this.dataStorageSerive.getBooksRead();
   }
 
 }

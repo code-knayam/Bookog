@@ -11,10 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreComponent } from './core/core.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './dashboard/home/home.component';
-import { BookEditComponent } from './dashboard/book-edit/book-edit.component';
-import { BookListComponent } from './dashboard/book-list/book-list.component';
 import { BookItemComponent } from './dashboard/book-item/book-item.component';
 import { MenuComponent } from './dashboard/menu/menu.component';
+import { AddBookComponent } from './dashboard/add-book/add-book.component';
+import { BooksCollectionComponent } from './dashboard/books-collection/books-collection.component';
+import { DataStorageService } from './dashboard/data-storage.service';
 
 @NgModule({
   declarations: [
@@ -26,17 +27,19 @@ import { MenuComponent } from './dashboard/menu/menu.component';
     CoreComponent,
     DashboardComponent,
     HomeComponent,
-    BookEditComponent,
-    BookListComponent,
     BookItemComponent,
-    MenuComponent
+    MenuComponent,
+    AddBookComponent,
+    BooksCollectionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    DataStorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

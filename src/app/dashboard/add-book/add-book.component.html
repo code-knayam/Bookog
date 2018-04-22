@@ -1,0 +1,84 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="heading">
+          <h3>
+            Add a new book to your collection
+          </h3>
+        </div>
+
+        <div class="form-container">
+          <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()"> 
+
+            <div class="row">
+              <div class="col-md-9">
+                <div class="form-group">
+                  <input 
+                  type="text" 
+                  class="form-control"
+                  name="bookTitle"
+                  formControlName="bookTitle"                  
+                  required>                   
+                  <label for="bookTitle">Book Title</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-9">
+                <div class="form-group">
+                  <input 
+                  type="text" 
+                  class="form-control"
+                  name="bookAuthor"
+                  formControlName="bookAuthor"
+                  required>
+                  <label for="bookAuthor">Book Author</label>
+                  <span class="error" *ngIf="addBookForm.controls.bookAuthor.dirty && addBookForm.controls.bookAuthor.invalid">
+                    Erro
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <input 
+                  type="text" 
+                  class="form-control"
+                  name="bookPages"
+                  formControlName="bookPages"
+                  required>
+                  <label for="bookPages">Pages</label>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-group">
+                  <input 
+                  type="text" 
+                  class="form-control"
+                  name="bookRating"
+                  formControlName="bookRating"
+                  required>
+                  <label for="bookRating">Your Rating (5)</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-9">
+                <button href="" class="btn btn-primary">Add Book</button>
+                <div class="wave"></div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

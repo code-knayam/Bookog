@@ -30,54 +30,54 @@
     cursor: pointer;
 }
 .nav .nav-toggle .nav-toggle-btn {
-    width: 25px;
+    width: 20px;
     height: 2px;
     background: #111;
     position: relative;        
-    transition: .5s;
+    transition: .3s;
     box-shadow: 0 1px 5px #555;
 }
 .nav .nav-toggle .nav-toggle-btn::before,
 .nav .nav-toggle .nav-toggle-btn::after {
     content: "";    
     height: 2px;    
-    width: 25px;
     position: absolute;
     background: #111;
-    transition: .5s;      
+    transition: .8s;      
     box-shadow: 0 1px 5px #555;      
 }
 .nav .nav-toggle .nav-toggle-btn::before {
     top: -8px;
+    width: 25px;
 }
 .nav .nav-toggle .nav-toggle-btn::after {
     top: 8px;
+    width: 15px;
 }
 .nav .nav-toggle.open-nav .nav-toggle-btn {
     background: transparent;
     box-shadow: none;
 }
 .nav .nav-toggle.open-nav .nav-toggle-btn::before {
-    transform: rotateZ(45deg);
+    transform: rotateZ(135deg);
     top: 0;
 }
 .nav .nav-toggle.open-nav .nav-toggle-btn::after {
-    transform: rotateZ(135deg);
+    transform: rotateZ(225deg);
     top: 0;
+    width: 25px;
 }
 
 .nav .nav-item-container {
     position: absolute;
     top: 60px;
     right: -270px;
-    right: 0;
     bottom: 0;
-    margin: 0;
     width: 270px;
-    margin: 0;        
     height: 700px;
-    padding: 15px 2px;
-    background: linear-gradient( rgba(255, 255, 255, .96), rgba(55, 67, 67, 0.96));    
+    margin: 0;
+    padding: 15px 0;
+    background: linear-gradient( rgba(255, 255, 255, 1), rgba(225, 147, 147, .96));
     box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.16);
     transition: .5s;
     z-index: 999;
@@ -89,13 +89,56 @@
     margin: 0;
     padding: 0;
 }
-.nav .nav-item-container .nav-items .nav-item {
+.nav .nav-item-container .nav-items .nav-item {   
+    position: relative;
+    left: 50px; 
     list-style: none;
-    margin: 0;    
-    padding: 15px 3px 15px 30px;
-    font-size: 15px;
-    border-bottom: 1px solid #111;
+    border-bottom: 1px solid rgba(56, 50, 50, .1);
+    transition: 1s;   
+}
+.nav .nav-item-container.open-nav-container .nav-items .nav-item {
+    left: 0;    
+}
+.nav .nav-item-container .nav-items .nav-item a {
+    text-decoration: none;
+}
+.nav .nav-item-container .nav-items .nav-item a p {        
+    color: #555;
+    height: 50px;    
+    line-height: 50px;
+    font-size: 15px;   
+    padding: 0; 
+    margin: 0;
+    padding-left: 40px;      
+    transition: .4s;  
+}
+.nav .nav-item-container .nav-items .nav-item a p i {
+    margin-right: 30px;
+    transition: .4s;
+}
+.nav .nav-item-container .nav-items .nav-item:hover:not(:first-child) {        
+    cursor: pointer;
+}
+.nav-item-active {
+    background: rgba(225, 147, 147, .96);
+}
+.nav-item-active i {
+    font-size: 20px;
+    color: #111;
+}
+.nav .nav-item-container .nav-items .nav-item:hover:not(:first-child) a p {
+    color: #111;    
+}
+.nav .nav-item-container .nav-items .nav-item:hover:not(:first-child) a p i {
+    font-size: 20px;
 }
 .nav .nav-item-container .nav-items .nav-item:first-child {
-    padding: 40px 3px 40px 30px;
+    padding: 20px 3px 20px 30px;
+}
+.nav .nav-item-container .nav-items .nav-item:first-child .profile-img {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #222;
+    border-radius: 50px;
+    margin-right: 10px;
 }
