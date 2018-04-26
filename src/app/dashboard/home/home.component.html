@@ -4,8 +4,10 @@
     <div class="container">
       <div class="row">
         <h3>
-          Read a new Book recently? Add Now &nbsp;
-          <i class="fa fa-plus"></i>          
+          Read a new Book recently? 
+          <a routerLink="/dashboard/addBook">
+            Add Now &nbsp; <i class="fa fa-plus"></i>          
+          </a>            
         </h3>
       </div>
     </div>
@@ -33,14 +35,16 @@
       <div class="row">
         <h3>
           Total Books Read till now &nbsp;
-          <i class="fa">{{booksRead}}</i>
+          <a routerLink="/dashboard/collection">
+            <i class="fa">{{booksRead}}</i> 
+          </a>
         </h3>
       </div>
     </div>
   </div>
   
   <!-- Top Reads -->
-  <div class="recent-book-container">
+  <!-- <div class="recent-book-container">
     <div class="container">
   
       <div class="heading">
@@ -53,5 +57,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

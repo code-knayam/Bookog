@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from '../../shared/book.model';
+import { DataStorageService } from '../data-storage.service';
 
 @Component({
   selector: 'app-books-collection',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BooksCollectionComponent implements OnInit {
 
-  constructor() { }
+  bookCollection: Book[];
+
+  constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
+    this.bookCollection = this.dataStorageService.getAllBooksRead();
   }
 
 }

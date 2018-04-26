@@ -2,14 +2,16 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
+        
 
-        <div class="heading">
-          <h3>
-            Add a new book to your collection
-          </h3>
-        </div>
-
-        <div class="form-container">
+        <div 
+          class="form-container" 
+          [ngClass]="showAddBookForm ? '' : 'hide-add-book-form'">
+          <div class="heading">
+            <h3>
+              Add a new book to your collection
+            </h3>
+          </div>
           <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()"> 
 
             <div class="row">
@@ -21,7 +23,21 @@
                   name="bookTitle"
                   formControlName="bookTitle"                  
                   required>                   
-                  <label for="bookTitle">Book Title</label>
+                  <label 
+                    for="bookTitle"
+                    [ngClass]="addBookForm.controls.bookTitle.value != '' && addBookForm.controls.bookTitle.dirty ? 'active-label': 'invalid-label' ">
+                    Book Title</label>
+                  <span class="error" 
+                    *ngIf="addBookForm.controls.bookTitle.dirty && addBookForm.controls.bookTitle.invalid">
+                    <span
+                      *ngIf="addBookForm.controls.bookTitle.errors.required">
+                      Book Title Can't be empty.
+                    </span>
+                    <span
+                      *ngIf="addBookForm.controls.bookTitle.errors.pattern">
+                      Only alphanumeric characters allowed.
+                    </span> 
+                  </span>
                 </div>
               </div>
             </div>
@@ -35,9 +51,20 @@
                   name="bookAuthor"
                   formControlName="bookAuthor"
                   required>
-                  <label for="bookAuthor">Book Author</label>
-                  <span class="error" *ngIf="addBookForm.controls.bookAuthor.dirty && addBookForm.controls.bookAuthor.invalid">
-                    Erro
+                  <label 
+                    for="bookAuthor"
+                    [ngClass]="addBookForm.controls.bookAuthor.value != '' && addBookForm.controls.bookAuthor.dirty ? 'active-label': 'invalid-label' ">
+                  Book Author</label>
+                  <span class="error" 
+                    *ngIf="addBookForm.controls.bookAuthor.dirty && addBookForm.controls.bookAuthor.invalid">
+                    <span
+                      *ngIf="addBookForm.controls.bookAuthor.errors.required">
+                      Book Author Can't be empty.
+                    </span>
+                    <span
+                      *ngIf="addBookForm.controls.bookAuthor.errors.pattern">
+                      Only alphanumeric characters allowed.
+                    </span> 
                   </span>
                 </div>
               </div>
@@ -47,12 +74,26 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <input 
-                  type="text" 
-                  class="form-control"
-                  name="bookPages"
-                  formControlName="bookPages"
-                  required>
-                  <label for="bookPages">Pages</label>
+                    type="text" 
+                    class="form-control"
+                    name="bookPages"
+                    formControlName="bookPages"
+                    required>
+                  <label 
+                    for="bookPages"
+                    [ngClass]="addBookForm.controls.bookPages.value != '' && addBookForm.controls.bookPages.dirty ? 'active-label': 'invalid-label' ">
+                    Pages</label>
+                  <span class="error" 
+                    *ngIf="addBookForm.controls.bookPages.dirty && addBookForm.controls.bookPages.invalid">
+                    <span
+                      *ngIf="addBookForm.controls.bookPages.errors.required">
+                      Book need to have some pages.
+                    </span>
+                    <span
+                      *ngIf="addBookForm.controls.bookPages.errors.pattern">
+                      Usually pages are only numbers.
+                    </span> 
+                  </span>  
                 </div>
               </div>
               <div class="col-md-5">
@@ -63,19 +104,54 @@
                   name="bookRating"
                   formControlName="bookRating"
                   required>
-                  <label for="bookRating">Your Rating (5)</label>
+                  <label 
+                    for="bookRating"
+                    [ngClass]="addBookForm.controls.bookRating.value != '' && addBookForm.controls.bookRating.dirty ? 'active-label': 'invalid-label' ">
+                    Your Rating (5)</label>
+                  <span class="error" 
+                    *ngIf="addBookForm.controls.bookRating.dirty && addBookForm.controls.bookRating.invalid">
+                    <span
+                      *ngIf="addBookForm.controls.bookRating.errors.required">
+                      Book need to have some rating.
+                    </span>
+                    <span
+                      *ngIf="addBookForm.controls.bookRating.errors.pattern">
+                      Usually ratings are only numbers.
+                    </span>
+                    <span
+                      *ngIf="addBookForm.controls.bookRating.errors.min">
+                      Min rating can be 1.
+                    </span> 
+                    <span
+                      *ngIf="addBookForm.controls.bookRating.errors.max">
+                      Max Rating can be 5.
+                    </span> 
+                  </span>
                 </div>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-9">
-                <button href="" class="btn btn-primary">Add Book</button>
-                <div class="wave"></div>
+                <button 
+                  type="submit" 
+                  class="btn btn-primary"
+                  [ngClass]="addBookForm.invalid ? 'inactive-btn' : 'active-btn'"
+                  [disabled]="addBookForm.invalid">Add Book</button>           
               </div>
             </div>
 
-          </form>
+          </form>          
+        </div>
+
+        <div class="add-more-container"
+          [ngClass]="showAddMoreBtn ? 'show-add-more' : ''">
+          <div class="row">
+            <h3>Added Book Successfully !!</h3>
+            <a 
+              class="btn add-more-btn" 
+              (click)="resetAndShowForm()">Want to add more ?</a>
+          </div>
         </div>
       </div>
 

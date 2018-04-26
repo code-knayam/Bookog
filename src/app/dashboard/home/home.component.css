@@ -13,6 +13,11 @@
     line-height: 120px;
     margin-left: 25px;
 }
+.add-book-container a {
+    color: #111;    
+    line-height: 120px;
+    text-decoration: none;
+}
 
 /* Recent Book Container */
 .recent-book-container {

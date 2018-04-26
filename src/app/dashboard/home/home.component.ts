@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.recentBooks = this.dataStorageSerive.getRecentBooks();
     this.topBooks = this.dataStorageSerive.getTopBooks();
-    this.booksRead = this.dataStorageSerive.getBooksRead();
+    this.booksRead = this.dataStorageSerive.getNumberOfBooksRead();
   }
 
 }

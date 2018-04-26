@@ -7,7 +7,8 @@
 }
 
 .jumbotron .heading {
-  padding: 20px 30px;
+  padding: 0px;
+  margin-bottom: 50px;
 }
 
 .jumbotron .heading h3 {
@@ -20,9 +21,12 @@
 .jumbotron .form-container {
   padding: 10px 30px;
 }
+.hide-add-book-form {
+  display: none;
+}
 
 .jumbotron .form-container .form-group {
-  min-height: 60px;
+  min-height: 65px;
 }
 
 .jumbotron .form-container .form-group .form-control {
@@ -41,41 +45,79 @@
   top: 0;
   height: 30px;
   line-height: 30px;
-  font-size: 15px;
+  /* font-size: 15px; */
   font-weight: 300;
   color: rgba(255, 230, 230, .91);
-  padding: 0 8px;
-  margin: 0;
+  /* padding: 0 8px; */
+  /* margin: 0; */
   transition: .5s;
   z-index: 0;
 }
 
-.jumbotron .form-container .form-group .form-control:focus+label {
+.jumbotron .form-container .form-group .form-control:focus+label, .active-label {
   margin-top: -30px;
   padding: 0;
+  font-size: 13px;
+}
+.invalid-label {
+  margin-top: 0px;
+  padding: 0 8px;
+  font-size: 15px;
 }
 
 .jumbotron .form-container .form-group .error {
-  transition: .5s ease-in;
-  -moz-transition: .5s ease-in;
-  -webkit-transition: .5s ease-in;
-  -o-transition: .5s ease-in;
   margin: 0;
-  padding: 0;
-  color: rgb(156, 62, 62);
-  font-size: 13px;
+  padding: 0;  
+  color: rgb(106, 32, 32);
+  font-size: 12px;
   font-weight: 300;
-  text-shadow: 0 0 1px #fff;
 }
 
 button {
-    margin-top: 20px;
-    width: 200px;
-    height: 40px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 0;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+  margin-top: 20px;
+  width: 200px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 0;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  transition: .5s;
+}
+button:hover {
+  box-shadow: 0 0 10px #333;
+}
+.inactive-btn {
+  cursor: no-drop;
+}
+.active-btn {
+  cursor: pointer;
+}
+
+.add-more-container {
+  text-align: center;
+  height: 100px;  
+  padding: 10px 30px;
+  display: none;
+}
+.show-add-more {
+  display: block;
+}
+.add-more-container h3 {
+  color: rgba(255, 230, 230, 1);
+  font-size: 33px;
+  font-weight: lighter;
+  text-transform: capitalize;
+}
+.add-more-container .add-more-btn {
+  padding: 10px 12px;
+  background: rgb(60, 60, 180);
+  color: #fff;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: .5s;
+}
+.add-more-container .add-more-btn:hover {
+  box-shadow: 0 0 10px #333;
 }
