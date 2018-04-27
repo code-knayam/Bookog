@@ -59,7 +59,7 @@ export class AuthService {
         this.spinnerService.showSpinner();
         firebase.auth().signOut();
         this.token = null;
-        this.router.navigate(['/']);
+        this.router.navigate(['/signIn']);
         this.spinnerService.hideSpinner();
     }
 

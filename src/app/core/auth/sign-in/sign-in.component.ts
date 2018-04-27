@@ -31,8 +31,6 @@ export class SignInComponent implements OnInit {
     this.spinnerService.showSpinner();
     const email = this.signInForm.value['email'];
     const password = this.signInForm.value['password'];
-    console.log(email);
-    console.log(password);
     this.authService.signInUser(email, password);
   }
 }

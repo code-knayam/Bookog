@@ -33,8 +33,6 @@ export class SignUpComponent implements OnInit {
     this.spinnerService.showSpinner();
     const email = this.signUpForm.value['email'];
     const password = this.signUpForm.value['password'];
-    console.log(email);
-    console.log(password);
     this.authService.signUpUser(email, password);
   }
 
