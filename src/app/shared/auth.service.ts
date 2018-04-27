@@ -3,21 +3,27 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 import { SpinnerService } from './spinner.service';
+import { UserDataStorageService } from './user-data-storage.service';
+import { User } from './user.model';
 
 @Injectable()
 export class AuthService {
 
     private token: string;
 
-    constructor(private router: Router, private spinnerService: SpinnerService) { }
+    constructor(private router: Router,
+            private spinnerService: SpinnerService,
+        private userDataStorageService: UserDataStorageService) { }
 
-    signUpUser(email: string, password: string) {
+    signUpUser(newUser: User, password) {
         this.spinnerService.showSpinner();
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        firebase.auth().createUserWithEmailAndPassword(newUser.userEmail, password)
             .then(
                 (response) => {
                     console.log(response);
                     this.setToken();
+                    newUser.userId = response.uid;
+                    this.userDataStorageService.saveUserData(newUser);
                     this.spinnerService.hideSpinner();
                     this.router.navigate(['/dashboard']);
                 }

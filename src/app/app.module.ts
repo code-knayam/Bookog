@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LandingComponent } from './core/landing/landing.component';
@@ -19,6 +20,7 @@ import { DataStorageService } from './dashboard/data-storage.service';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { SpinnerService } from './shared/spinner.service';
 import { AuthService } from './shared/auth.service';
+import { UserDataStorageService } from './shared/user-data-storage.service';
 
 @NgModule({
   declarations: [
@@ -39,12 +41,14 @@ import { AuthService } from './shared/auth.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     DataStorageService,
     SpinnerService,
-    AuthService
+    AuthService,
+    UserDataStorageService
   ],
   bootstrap: [AppComponent]
 })

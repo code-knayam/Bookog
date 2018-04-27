@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as CONSTANTS from '../../../shared/constants';
 import { AuthService } from '../../../shared/auth.service';
 import { SpinnerService } from '../../../shared/spinner.service';
+import { User } from '../../../shared/user.model';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +15,8 @@ export class SignUpComponent implements OnInit {
 
   signUpForm: FormGroup;
 
-  constructor(private authService: AuthService, private spinnerService: SpinnerService) { }
+  constructor(private authService: AuthService,
+      private spinnerService: SpinnerService) { }
 
   ngOnInit() {
     this.initForm();
@@ -33,7 +35,11 @@ export class SignUpComponent implements OnInit {
     this.spinnerService.showSpinner();
     const email = this.signUpForm.value['email'];
     const password = this.signUpForm.value['password'];
-    this.authService.signUpUser(email, password);
+    const userName = this.signUpForm.value['username'];
+
+    const newUser = new User('', userName, email);
+
+    this.authService.signUpUser(newUser, password);
   }
 
 }
