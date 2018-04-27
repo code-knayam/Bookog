@@ -18,6 +18,7 @@ import { BooksCollectionComponent } from './dashboard/books-collection/books-col
 import { DataStorageService } from './dashboard/data-storage.service';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { SpinnerService } from './shared/spinner.service';
+import { AuthService } from './shared/auth.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SpinnerService } from './shared/spinner.service';
   ],
   providers: [
     DataStorageService,
-    SpinnerService
+    SpinnerService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
