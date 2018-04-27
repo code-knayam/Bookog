@@ -131,7 +131,7 @@
               </div>
 
               <div class="submit-group">
-                <button type="submit" class="btn submit-btn" [disabled]="!signUpForm.valid" >Let's Start</button>
+                <button type="submit" class="btn submit-btn" [ngClass]="signUpForm.invalid ? 'inactive-btn' : 'active-btn'" [disabled]="!signUpForm.valid" >Let's Start</button>
               </div>
 
               <div class="extra-msg-group">

@@ -109,7 +109,6 @@
   font-size: 15px;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
   transition: .5s ease-in-out;
   -moz-transition: .5s ease-in-out;
   -webkit-transition: .5s ease-in-out;
@@ -119,6 +118,14 @@
 .jumbotron .content .form-container .submit-group .submit-btn:hover {
   box-shadow: 0 0 20px #222;
   color: rgba(256, 256, 256, 1);
+}
+
+.inactive-btn {
+  cursor: no-drop;
+}
+
+.active-btn {
+  cursor: pointer;
 }
 
 .jumbotron .content .form-container .extra-msg-group {

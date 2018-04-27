@@ -18,108 +18,128 @@
   font-weight: 300;
   text-transform: uppercase;
 }
+
 .jumbotron .content h4 {
-    color: #FFFDFD;
-    opacity: .5;
-    font-size: 18px;
-    font-weight: 300;
-    text-transform: capitalize;
-  }
+  color: #FFFDFD;
+  opacity: .5;
+  font-size: 18px;
+  font-weight: 300;
+  text-transform: capitalize;
+}
 
 .jumbotron .content .form-container {
-    min-height: 250px;
-    margin-top: 50px;
-    padding: 10px 50px;  
+  min-height: 250px;
+  margin-top: 50px;
+  padding: 10px 50px;
 }
+
 .jumbotron .content .form-container .form-group {
-    margin-bottom: 20px;
-    min-height: 60px;
-    text-align: left;
+  margin-bottom: 20px;
+  min-height: 60px;
+  text-align: left;
 }
+
 .jumbotron .content .form-container .form-group .form-control {
-    position: relative;
-    height: 30px;
-    border: none;
-    box-shadow: none;
-    background: transparent;  
-    border-radius: 0;
-    padding: 10px 0;
-    color: rgba(256, 256, 256, .59);
-    font-weight: lighter;
-    font-size: 15px;
-    z-index: 2;
+  position: relative;
+  height: 30px;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  border-radius: 0;
+  padding: 10px 0;
+  color: rgba(256, 256, 256, .59);
+  font-weight: lighter;
+  font-size: 15px;
+  z-index: 2;
 }
+
 .jumbotron .content .form-container .form-group .valid-input {
-    border-bottom: 1px solid rgba(256, 256, 256, 0.16);
+  border-bottom: 1px solid rgba(256, 256, 256, 0.16);
 }
+
 .jumbotron .content .form-container .form-group .form-control:focus {
-    border-bottom: 2px solid rgba(256, 256, 256, 0.66);
+  border-bottom: 2px solid rgba(256, 256, 256, 0.66);
 }
+
 .jumbotron .content .form-container .form-group .invalid-input {
-    border-bottom: 2px solid rgba(256, 26, 26, 0.56);
+  border-bottom: 2px solid rgba(256, 26, 26, 0.56);
 }
 
 .jumbotron .content .form-container .form-group label {
-    position: absolute;  
-    padding: 10px 0;
-    font-weight: lighter;
-    z-index: 1;
-    color: rgba(256, 256, 256, .49);
-    transition: .2s ease-in;
-    -moz-transition: .2s ease-in;
-    -webkit-transition: .2s ease-in;
-    -o-transition:  .2s ease-in;
+  position: absolute;
+  padding: 10px 0;
+  font-weight: lighter;
+  z-index: 1;
+  color: rgba(256, 256, 256, .49);
+  transition: .2s ease-in;
+  -moz-transition: .2s ease-in;
+  -webkit-transition: .2s ease-in;
+  -o-transition: .2s ease-in;
 }
-.jumbotron .content .form-container .form-group .form-control:focus + label, 
+
+.jumbotron .content .form-container .form-group .form-control:focus+label,
 .jumbotron .content .form-container .form-group .active-label {
-    margin-top: -55px;
-    font-size: 11px;
+  margin-top: -55px;
+  font-size: 11px;
 }
+
 .jumbotron .content .form-container .form-group .inactive-label {
-    margin-top: -36px;
-    font-size: 15px;
+  margin-top: -36px;
+  font-size: 15px;
 }
 
 .jumbotron .content .form-container .form-group .error {
-    transition: .5s ease-in;
-    -moz-transition: .5s ease-in;
-    -webkit-transition: .5s ease-in;
-    -o-transition:  .5s ease-in;
-    margin: 0;
-    padding: 0;
-    color: rgb(156, 62, 62);
-    font-size: 13px;
-    font-weight: 300;
+  transition: .5s ease-in;
+  -moz-transition: .5s ease-in;
+  -webkit-transition: .5s ease-in;
+  -o-transition: .5s ease-in;
+  margin: 0;
+  padding: 0;
+  color: rgb(156, 62, 62);
+  font-size: 13px;
+  font-weight: 300;
 }
+
 .jumbotron .content .form-container .submit-group .submit-btn {
-    margin-top: 20px;
-    padding: 7px 50px; 
-    background-color: rgba(201, 53, 53, .69);
-    color: rgba(256, 256, 256, .5);
-    font-weight: lighter;
-    font-size: 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: .5s ease-in-out;
-    -moz-transition: .5s ease-in-out;
-    -webkit-transition: .5s ease-in-out;
-    -o-transition:  .5s ease-in-out;
+  margin-top: 20px;
+  padding: 7px 50px;
+  background-color: rgba(201, 53, 53, .69);
+  color: rgba(256, 256, 256, .5);
+  font-weight: lighter;
+  font-size: 15px;
+  border: none;
+  border-radius: 4px;
+  transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -webkit-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
 }
+
 .jumbotron .content .form-container .submit-group .submit-btn:hover {
-    box-shadow: 0 0 20px #222;
-    color: rgba(256, 256, 256, 1);
+  box-shadow: 0 0 20px #222;
+  color: rgba(256, 256, 256, 1);
 }
+
+.inactive-btn {
+  cursor: no-drop;
+}
+
+.active-btn {
+  cursor: pointer;
+}
+
 .jumbotron .content .form-container .extra-msg-group {
-    margin: 20px;
+  margin: 20px;
 }
+
 .jumbotron .content .form-container .extra-msg-group p {
-    color: rgba(256, 256, 256, .29);
-    font-weight: lighter;
-    font-size: 15px;
+  color: rgba(256, 256, 256, .29);
+  font-weight: lighter;
+  font-size: 15px;
 }
+
 .jumbotron .content .form-container .extra-msg-group p a {
-    text-decoration: none;
-    font-weight: lighter;
-    font-size: 15px;
+  text-decoration: none;
+  font-weight: lighter;
+  font-size: 15px;
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +10,16 @@ import 'rxjs/Rx';
 })
 export class AppComponent {
 
-  title = 'app';
-  // online$: Observable<boolean>;
+  showSpinner = false;
 
-  constructor() {
-    // this.online$ = Observable.merge(
-    // Observable.of(navigator.onLine),
-    // Observable.fromEvent(window, 'online').mapTo(true),
-    // Observable.fromEvent(window, 'offline').mapTo(false)
-    // );
-    // <p>{{online$ | async}}</p> usage for above
+  constructor(private router: Router) {
+    router.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+        this.showSpinner = true;
+      } else if (event instanceof NavigationEnd) {
+        this.showSpinner = false;
+      }
+    });
   }
+
 }
