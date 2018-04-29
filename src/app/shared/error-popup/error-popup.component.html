@@ -1,4 +1,4 @@
-<div class="error-popup" *ngIf="errorFlag">
+<div class="error-popup" *ngIf="errorFlag" [ngClass]="toggleErrorClass? 'hide-error-popup' : '' ">
   <div class="container">
     <div class="row">
       <div class="content">

@@ -10,6 +10,7 @@ export class ErrorPopupComponent implements OnInit {
 
   error: any;
   private errorFlag = false;
+  private toggleErrorClass = false;
 
   constructor(private errorService: ErrorService) { }
 
@@ -24,7 +25,13 @@ export class ErrorPopupComponent implements OnInit {
   }
 
   onDismissError() {
-    this.errorFlag = false;
+    this.toggleErrorClass = true;
+    setTimeout(
+      () => {
+        this.errorFlag = false;
+        this.toggleErrorClass = false;
+      }, 500
+    );
   }
 
 }

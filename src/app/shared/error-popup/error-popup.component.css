@@ -7,9 +7,10 @@
     bottom: 0;
     background: rgba(10, 10, 10, 0.5);
     z-index: 9999;
+    transition: .5s ease;
 }
 .error-popup .content {
-    height: 300px;
+    min-height: 300px;
     width: auto;
     position: absolute;
     top: 50%;
@@ -43,4 +44,9 @@
 }
 .error-popup .content .close-btn:hover {
     box-shadow: 0 0 4px #777;
+}
+
+.hide-error-popup {
+    opacity: 0;    
+    padding-left: 200%;
 }
