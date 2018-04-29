@@ -16,7 +16,7 @@ import { BookItemComponent } from './dashboard/book-item/book-item.component';
 import { MenuComponent } from './dashboard/menu/menu.component';
 import { AddBookComponent } from './dashboard/add-book/add-book.component';
 import { BooksCollectionComponent } from './dashboard/books-collection/books-collection.component';
-import { DataStorageService } from './dashboard/data-storage.service';
+import { DataStorageService } from './shared/data-storage.service';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { SpinnerService } from './shared/spinner.service';
 import { AuthService } from './shared/auth.service';
