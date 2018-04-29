@@ -51,7 +51,7 @@ export class DataStorageService {
     ];
 
     getRecentBooks() {
-        return this.books.slice(0, 3);
+        return this.books.slice(this.books.length - 3, this.books.length);
     }
 
     getTopBooks() {
@@ -66,12 +66,12 @@ export class DataStorageService {
         return this.books;
     }
 
-    addNewBook( newBook: Book) {
-        this.books.push( newBook );
+    addNewBook(newBook: Book) {
+        this.books.push(newBook);
     }
 
     getNextId() {
-        return 'boo' + ( this.books.length + 1) ;
+        return 'boo' + (this.books.length + 1);
     }
 
 }

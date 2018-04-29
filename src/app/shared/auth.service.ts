@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { SpinnerService } from './spinner.service';
 import { UserDataStorageService } from './user-data-storage.service';
 import { User } from './user.model';
+import { ErrorService } from './error.service';
 
 @Injectable()
 export class AuthService {
@@ -13,7 +14,8 @@ export class AuthService {
 
     constructor(private router: Router,
             private spinnerService: SpinnerService,
-        private userDataStorageService: UserDataStorageService) { }
+            private userDataStorageService: UserDataStorageService,
+            private errorService: ErrorService) { }
 
     signUpUser(newUser: User, password) {
         this.spinnerService.showSpinner();
@@ -23,13 +25,19 @@ export class AuthService {
                     console.log(response);
                     this.setToken();
                     newUser.userId = response.uid;
+                    this.setCurrentUserId(newUser.userId);
                     this.userDataStorageService.saveUserData(newUser);
                     this.spinnerService.hideSpinner();
                     this.router.navigate(['/dashboard']);
                 }
             )
             .catch(
-                error => console.log(error)
+                (error) => {
+                    console.log(error);
+                    this.errorService.setError(error);
+                    this.errorService.showError();
+                    this.spinnerService.hideSpinner();
+                }
             );
     }
 
@@ -40,19 +48,34 @@ export class AuthService {
                 (response) => {
                     console.log(response);
                     this.setToken();
+                    this.setCurrentUserId(response.uid);
                     this.spinnerService.hideSpinner();
                     this.router.navigate(['/dashboard']);
                 }
             )
             .catch(
-                error => console.log(error)
+                (error) => {
+                    console.log(error);
+                    this.errorService.setError(error);
+                    this.errorService.showError();
+                    this.spinnerService.hideSpinner();
+                }
             );
     }
 
     setToken() {
-        firebase.auth().currentUser.getIdToken().then(
+        firebase.auth().currentUser.getIdToken()
+        .then(
             (token: string) => {
                 this.token = token;
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error);
+                this.errorService.setError(error);
+                this.errorService.showError();
+                this.spinnerService.hideSpinner();
             }
         );
     }
@@ -67,6 +90,10 @@ export class AuthService {
         this.token = null;
         this.router.navigate(['/signIn']);
         this.spinnerService.hideSpinner();
+    }
+
+    setCurrentUserId(currentUserId: string) {
+        this.userDataStorageService.setCurrentUser(currentUserId);
     }
 
 }
