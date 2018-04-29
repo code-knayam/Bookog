@@ -21,6 +21,8 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { SpinnerService } from './shared/spinner.service';
 import { AuthService } from './shared/auth.service';
 import { UserDataStorageService } from './shared/user-data-storage.service';
+import { ErrorPopupComponent } from './shared/error-popup/error-popup.component';
+import { ErrorService } from './shared/error.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { UserDataStorageService } from './shared/user-data-storage.service';
     MenuComponent,
     AddBookComponent,
     BooksCollectionComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ErrorPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { UserDataStorageService } from './shared/user-data-storage.service';
     DataStorageService,
     SpinnerService,
     AuthService,
-    UserDataStorageService
+    UserDataStorageService,
+    ErrorService
   ],
   bootstrap: [AppComponent]
 })
