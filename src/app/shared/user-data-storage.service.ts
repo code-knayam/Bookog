@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { User } from './user.model';
-import { DataStorageService } from '../dashboard/data-storage.service';
+import { DataStorageService } from './data-storage.service';
 
 
 @Injectable()
