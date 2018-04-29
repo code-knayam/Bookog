@@ -1,0 +1,11 @@
+<div class="error-popup" *ngIf="errorFlag">
+  <div class="container">
+    <div class="row">
+      <div class="content">
+        <h3>Hmmm, Looks like something's wrong !!!</h3>
+        <p>{{error}}</p>
+        <a (click)="onDismissError()" class="btn close-btn">Dismiss</a>
+      </div>
+    </div>
+  </div>
+</div>

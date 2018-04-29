@@ -1,0 +1,46 @@
+.error-popup {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(10, 10, 10, 0.5);
+    z-index: 9999;
+}
+.error-popup .content {
+    height: 300px;
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(255,255, 255, 1);
+    padding: 80px 50px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 30px #555;
+}
+.error-popup .content h3 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: #111;
+    margin-bottom: 30px;
+}
+.error-popup .content p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    color: #333;
+}
+.error-popup .content .close-btn {
+    margin-top: 30px;
+    background: rgb(200, 10, 10);
+    color: #fff;
+    padding: 5px 18px;
+    border-radius: 3px;
+    font-weight: 300;
+    box-shadow: 0 0 8px #666;
+}
+.error-popup .content .close-btn:hover {
+    box-shadow: 0 0 4px #777;
+}
