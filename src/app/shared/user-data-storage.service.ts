@@ -24,13 +24,4 @@ export class UserDataStorageService {
         );
     }
 
-    createBookData() {
-        return this.httpClient.post('https://bookog-24420.firebaseio.com/book-data-' + this.currentUserId + '.json'
-        , this.dataStorageSerivce.getAllBooksRead())
-        .subscribe(
-            (response) => console.log(response),
-            (error) => console.log(error)
-        );
-    }
-
 }

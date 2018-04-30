@@ -21,7 +21,7 @@
         <h4>Books Read Recently</h4>
       </div>
   
-      <div class="row">
+      <div class="row"  *ngIf="showBooks">
         <div class="col-md-4" *ngFor="let book of recentBooks">
           <app-book-item [bookItem]="book"></app-book-item>
         </div>

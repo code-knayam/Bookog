@@ -12,13 +12,24 @@ export class HomeComponent implements OnInit {
   recentBooks: Book[];
   topBooks: Book[];
   booksRead;
+  showBooks = true;
 
-  constructor(private dataStorageSerive: DataStorageService) {}
+  constructor(private dataStorageSerive: DataStorageService) { }
 
   ngOnInit() {
-    this.recentBooks = this.dataStorageSerive.getRecentBooks();
-    this.topBooks = this.dataStorageSerive.getTopBooks();
-    this.booksRead = this.dataStorageSerive.getNumberOfBooksRead();
+    this.dataStorageSerive.fetchBooks()
+      .subscribe(
+        (response) => {
+          this.dataStorageSerive.setBooksInCache(response);
+          this.recentBooks = this.dataStorageSerive.getRecentBooks();
+          if (this.recentBooks == null) {
+            this.showBooks = false;
+          }
+          // this.topBooks = this.dataStorageSerive.getTopBooks();
+          this.booksRead = this.dataStorageSerive.getNumberOfBooksRead();
+          console.log(this.booksRead);
+        }
+      );
   }
 
 }

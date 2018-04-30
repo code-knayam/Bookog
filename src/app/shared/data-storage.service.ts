@@ -1,57 +1,47 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { Book } from '../shared/book.model';
 
+@Injectable()
 export class DataStorageService {
 
-    books: Book[] = [
-        new Book(
-            'boo1',
-            'Book 1',
-            'Author 1',
-            3,
-            400,
-            new Date(),
-            'assets/thumbnail_book_item.jpg'
-        ),
-        new Book(
-            'boo2',
-            'Book 2',
-            'Author 2',
-            3,
-            400,
-            new Date(),
-            'assets/thumbnail_book_item.jpg'
-        ),
-        new Book(
-            'boo3',
-            'Book 3',
-            'Author 3',
-            3,
-            400,
-            new Date(),
-            'assets/thumbnail_book_item.jpg'
-        ),
-        new Book(
-            'boo4',
-            'Book 4',
-            'Author 4',
-            3,
-            400,
-            new Date(),
-            'assets/thumbnail_book_item.jpg'
-        ),
-        new Book(
-            'boo5',
-            'Book 5',
-            'Author 5',
-            3,
-            400,
-            new Date(),
-            'assets/thumbnail_book_item.jpg'
-        )
-    ];
+    constructor(private httpClient: HttpClient) { }
+
+    private books = [];
+
+    fetchBooks() {
+        return this.httpClient.get('https://bookog-24420.firebaseio.com/book-data-7rJQbiIYVmeUeCntyFqUUUmcTW' + '.json')
+            .map(
+                (response: any) => {
+                    if (response != null) {
+                        return response[Object.keys(response)[0]];
+                    }
+                }
+            );
+    }
+
+    saveBooks() {
+        return this.httpClient.post('https://bookog-24420.firebaseio.com/book-data-7rJQbiIYVmeUeCntyFqUUUmcTW' + '.json'
+            , this.getAllBooksRead())
+            .subscribe(
+                (response) => console.log(response),
+                (error) => console.log(error)
+            );
+    }
+
+    setBooksInCache(book: Book) {
+        localStorage.setItem('books', JSON.stringify(book));
+    }
 
     getRecentBooks() {
-        return this.books.slice(this.books.length - 3, this.books.length);
+        if (this.books == null) {
+            return null;
+        } else if (this.books.length <= 3) {
+            return this.books;
+        } else {
+            return this.books.slice(this.books.length - 3, this.books.length).reverse();
+        }
     }
 
     getTopBooks() {
@@ -59,6 +49,9 @@ export class DataStorageService {
     }
 
     getNumberOfBooksRead() {
+        if (this.books == null) {
+            return 0;
+        }
         return this.books.length;
     }
 
@@ -68,9 +61,14 @@ export class DataStorageService {
 
     addNewBook(newBook: Book) {
         this.books.push(newBook);
+        // this.setBooksInCache(this.books);
+        this.saveBooks();
     }
 
     getNextId() {
+        if (this.books == null) {
+            return 'boo0';
+        }
         return 'boo' + (this.books.length + 1);
     }
 
