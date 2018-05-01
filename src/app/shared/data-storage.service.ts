@@ -3,19 +3,21 @@ import { HttpClient } from '@angular/common/http';
 
 import { Book } from '../shared/book.model';
 import { UserDataStorageService } from './user-data-storage.service';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class DataStorageService {
 
     constructor(private httpClient: HttpClient,
-                private userDataStorageService: UserDataStorageService) { }
+        private userDataStorageService: UserDataStorageService) { }
 
     private books = [];
+    booksChanged = new Subject<Book[]>();
 
     fetchBooks() {
         return this.httpClient.get('https://bookog-24420.firebaseio.com/book-data-'
-        + this.userDataStorageService.getCurrentUser()
-        + '.json')
+            + this.userDataStorageService.getCurrentUser()
+            + '.json')
             .map(
                 (response: any) => {
                     if (response != null) {
@@ -30,14 +32,60 @@ export class DataStorageService {
             );
     }
 
-    saveBooks(book: Book) {
+    saveBook(book: Book) {
         return this.httpClient.post('https://bookog-24420.firebaseio.com/book-data-'
-        + this.userDataStorageService.getCurrentUser()
-        + '.json'
+            + this.userDataStorageService.getCurrentUser()
+            + '.json'
             , book)
             .subscribe(
                 (response) => console.log(response),
                 (error) => console.log(error)
+            );
+    }
+
+    saveBooks(newResponse: any) {
+        return this.httpClient.put('https://bookog-24420.firebaseio.com/book-data-'
+            + this.userDataStorageService.getCurrentUser()
+            + '.json'
+            , newResponse)
+            .subscribe(
+                (response) => console.log(response),
+                (error) => console.log(error)
+            );
+    }
+
+    deleteBook(bookID: string) {
+        const tempBook = [];
+        for (const book of this.books) {
+            if (book.bookID === bookID) {
+                continue;
+            }
+            tempBook.push(book);
+        }
+        this.books = tempBook;
+        return this.httpClient.get('https://bookog-24420.firebaseio.com/book-data-'
+            + this.userDataStorageService.getCurrentUser()
+            + '.json')
+            .map(
+                (response: any) => {
+                    if (response != null) {
+                        console.log(response);
+                        for (const key of Object.keys(response)) {
+                            console.log(key);
+                            if (response[key].bookID === bookID) {
+                                delete response[key];
+                            }
+                        }
+                    }
+                    return response;
+                }
+            )
+            .subscribe(
+                (response) => {
+                    console.log(response);
+                    this.saveBooks(response);
+                    this.booksChanged.next();
+                }
             );
     }
 
@@ -49,10 +97,6 @@ export class DataStorageService {
         } else {
             return this.books.slice(0, 3);
         }
-    }
-
-    getTopBooks() {
-        return this.books;
     }
 
     getNumberOfBooksRead() {
@@ -68,8 +112,7 @@ export class DataStorageService {
 
     addNewBook(newBook: Book) {
         this.books.unshift(newBook);
-        // this.setBooksInCache(this.books);
-        this.saveBooks(newBook);
+        this.saveBook(newBook);
     }
 
     getNextId() {

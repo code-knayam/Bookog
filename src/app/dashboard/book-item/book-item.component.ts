@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Book } from '../../shared/book.model';
+import { DataStorageService } from '../../shared/data-storage.service';
 
 @Component({
   selector: 'app-book-item',
@@ -12,7 +13,7 @@ export class BookItemComponent implements OnInit {
   @Input() bookItem: Book;
   isOpen = false;
 
-  constructor() { }
+  constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
   }
@@ -23,5 +24,7 @@ export class BookItemComponent implements OnInit {
 
   onDelete() {
     console.log('delete clicked');
+    console.log(this.bookItem.bookID);
+    this.dataStorageService.deleteBook(this.bookItem.bookID);
   }
 }

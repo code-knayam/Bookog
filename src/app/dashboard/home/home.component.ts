@@ -21,8 +21,16 @@ export class HomeComponent implements OnInit {
     if (this.recentBooks == null) {
       this.showBooks = false;
     }
-    // this.topBooks = this.dataStorageSerive.getTopBooks();
     this.booksRead = this.dataStorageSerive.getNumberOfBooksRead();
+    this.dataStorageSerive.booksChanged.subscribe(
+      () => {
+        this.recentBooks = this.dataStorageSerive.getRecentBooks();
+        if (this.recentBooks == null) {
+          this.showBooks = false;
+        }
+        this.booksRead = this.dataStorageSerive.getNumberOfBooksRead();
+      }
+    );
     console.log(this.booksRead);
 
   }

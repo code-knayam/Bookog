@@ -15,6 +15,11 @@ export class BooksCollectionComponent implements OnInit {
 
   ngOnInit() {
     this.bookCollection = this.dataStorageService.getAllBooksRead();
+    this.dataStorageService.booksChanged.subscribe(
+      () => {
+        this.bookCollection = this.dataStorageService.getAllBooksRead();
+      }
+    );
   }
 
 }
