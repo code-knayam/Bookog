@@ -41,10 +41,6 @@ export class DataStorageService {
             );
     }
 
-    setBooksInCache(book: Book) {
-        localStorage.setItem('books', JSON.stringify(book));
-    }
-
     getRecentBooks() {
         if (this.books == null) {
             return null;
