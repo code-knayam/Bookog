@@ -28,13 +28,23 @@ export class AuthService {
                     this.setToken();
                     newUser.userId = response.uid;
                     this.setCurrentUserId(newUser.userId);
-                    this.userDataStorageService.saveUserData(newUser);
-                    this.dataStorageService.fetchBooks().subscribe(
-                        () => {
-                            this.spinnerService.hideSpinner();
-                            this.router.navigate(['/dashboard']);
-                        }
-                    );
+                    this.userDataStorageService.saveUserData(newUser)
+                        .subscribe(
+                            (saveDataresponse) => {
+                                console.log(saveDataresponse);
+                                this.userDataStorageService.setCurrentUserName()
+                                    .subscribe(
+                                        () => {
+                                            this.dataStorageService.fetchBooks().subscribe(
+                                                () => {
+                                                    this.spinnerService.hideSpinner();
+                                                    this.router.navigate(['/dashboard']);
+                                                }
+                                            );
+                                        }
+                                    );
+                            }
+                        );
                 }
             )
             .catch(
@@ -55,12 +65,17 @@ export class AuthService {
                     console.log(response);
                     this.setToken();
                     this.setCurrentUserId(response.uid);
-                    this.dataStorageService.fetchBooks().subscribe(
-                        () => {
-                            this.spinnerService.hideSpinner();
-                            this.router.navigate(['/dashboard']);
-                        }
-                    );
+                    this.userDataStorageService.setCurrentUserName()
+                        .subscribe(
+                            () => {
+                                this.dataStorageService.fetchBooks().subscribe(
+                                    () => {
+                                        this.spinnerService.hideSpinner();
+                                        this.router.navigate(['/dashboard']);
+                                    }
+                                );
+                            }
+                        );
                 }
             )
             .catch(
