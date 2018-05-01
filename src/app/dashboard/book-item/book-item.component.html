@@ -1,12 +1,23 @@
 <div class="book-item">
 
-  <!-- Book Image -->
-  <div class="upper-section">
+  <div class="container">
     <img src="{{bookItem.bookImageURL}}" alt="{{bookItem.bookTitle}}" class="img-responsive">
   </div>
 
+  <div class="content">
+    <h3><strong>{{bookItem.bookTitle}}</strong></h3>
+    <p>{{bookItem.bookAuthor}}</p>
+    <span class="time">{{bookItem.bookTimestamp | date}}</span>
+    <span class="pages">{{bookItem.bookPages}}</span>
+  </div>
+
+  <!-- Book Image -->
+  <!-- <div class="upper-section">
+    <img src="{{bookItem.bookImageURL}}" alt="{{bookItem.bookTitle}}" class="img-responsive">
+  </div> -->
+
   <!-- Book Details -->
-  <div class="lower-section" [ngClass]="isOpen ? 'hide-content' : ''">    
+  <!-- <div class="lower-section" [ngClass]="isOpen ? 'hide-content' : ''">    
     <h4 title="{{bookItem.bookTitle}}">{{bookItem.bookTitle}}</h4>
     <div class="content">
       <p>
@@ -31,10 +42,10 @@
         {{bookItem.bookRating}} / 5
       </p>
     </div>
-  </div>
+  </div> -->
 
   <!-- Menu -->
-  <div class="menu-section" [ngClass]="isOpen ? 'show-menu' : ''">
+  <!-- <div class="menu-section" [ngClass]="isOpen ? 'show-menu' : ''">
     <div class="menu-toggle">
         <span class="fa fa-angle-up" (click)="toggleMenu()"></span>      
     </div>
@@ -51,5 +62,5 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
 </div>

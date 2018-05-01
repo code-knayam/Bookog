@@ -23,7 +23,7 @@
 .recent-book-container {
     margin: 0 60px;    
     min-height: 600px;
-    background: rgba(251, 253, 253, 0.962);
+    background: linear-gradient(to right, rgba(201, 53, 53, 0.62), rgba(101, 27, 27, 0.62));    
     box-shadow: 0 10px 20px rgba(0, 0, 0, .16);  
     padding-bottom: 30px;  
 }
@@ -37,5 +37,5 @@
 }
 .recent-book-container .heading h4 {
     font-size: 26px;
-    color: rgb(102, 102, 102);  
+    color: rgb(10, 10, 10);  
 }
