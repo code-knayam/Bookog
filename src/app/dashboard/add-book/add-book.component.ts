@@ -27,7 +27,7 @@ export class AddBookComponent implements OnInit {
     this.addBookForm = new FormGroup({
       bookTitle: new FormControl(null, [Validators.required, Validators.pattern(CONSTANTS.APLHANUMERIC_REGEX)]),
       bookAuthor: new FormControl(null, [Validators.required, Validators.pattern(CONSTANTS.APLHANUMERIC_REGEX)]),
-      bookPages: new FormControl(null, [Validators.pattern(CONSTANTS.NUMERIC_REGEX)]),
+      bookPages: new FormControl(null, [Validators.pattern(CONSTANTS.NUMERIC_REGEX), Validators.min(1)]),
       bookRating: new FormControl(null, [
           Validators.required,
           Validators.pattern(CONSTANTS.DECIMAL_NUMBER_REGEX),

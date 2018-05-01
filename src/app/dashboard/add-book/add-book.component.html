@@ -93,6 +93,10 @@
                       *ngIf="addBookForm.controls.bookPages.errors.pattern">
                       Usually pages are only numbers.
                     </span> 
+                    <span
+                      *ngIf="addBookForm.controls.bookPages.errors.min">
+                      There cant be 0 pages.
+                    </span> 
                   </span>  
                 </div>
               </div>
