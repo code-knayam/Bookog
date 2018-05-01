@@ -15,15 +15,20 @@ export class DataStorageService {
             .map(
                 (response: any) => {
                     if (response != null) {
-                        return response[Object.keys(response)[0]];
+                        console.log(response);
+                        for (const key of Object.keys(response)) {
+                            console.log(key);
+                            this.books.push(response[key]);
+                        }
+                        this.sortBooksById();
                     }
                 }
             );
     }
 
-    saveBooks() {
+    saveBooks(book: Book) {
         return this.httpClient.post('https://bookog-24420.firebaseio.com/book-data-7rJQbiIYVmeUeCntyFqUUUmcTW' + '.json'
-            , this.getAllBooksRead())
+            , book)
             .subscribe(
                 (response) => console.log(response),
                 (error) => console.log(error)
@@ -40,7 +45,7 @@ export class DataStorageService {
         } else if (this.books.length <= 3) {
             return this.books;
         } else {
-            return this.books.slice(this.books.length - 3, this.books.length).reverse();
+            return this.books.slice(0, 3);
         }
     }
 
@@ -60,9 +65,9 @@ export class DataStorageService {
     }
 
     addNewBook(newBook: Book) {
-        this.books.push(newBook);
+        this.books.unshift(newBook);
         // this.setBooksInCache(this.books);
-        this.saveBooks();
+        this.saveBooks(newBook);
     }
 
     getNextId() {
@@ -72,4 +77,18 @@ export class DataStorageService {
         return 'boo' + (this.books.length + 1);
     }
 
+    sortBooksById() {
+        this.books.sort(
+            (a, b) => {
+                if (a.bookID > b.bookID) { return -1; }
+                if (a.bookID < b.bookID) { return 1; }
+                return 0;
+            }
+        );
+        console.log(this.books);
+    }
+
+    resetBooks() {
+        this.books = [];
+    }
 }

@@ -17,19 +17,14 @@ export class HomeComponent implements OnInit {
   constructor(private dataStorageSerive: DataStorageService) { }
 
   ngOnInit() {
-    this.dataStorageSerive.fetchBooks()
-      .subscribe(
-        (response) => {
-          this.dataStorageSerive.setBooksInCache(response);
-          this.recentBooks = this.dataStorageSerive.getRecentBooks();
-          if (this.recentBooks == null) {
-            this.showBooks = false;
-          }
-          // this.topBooks = this.dataStorageSerive.getTopBooks();
-          this.booksRead = this.dataStorageSerive.getNumberOfBooksRead();
-          console.log(this.booksRead);
-        }
-      );
+    this.recentBooks = this.dataStorageSerive.getRecentBooks();
+    if (this.recentBooks == null) {
+      this.showBooks = false;
+    }
+    // this.topBooks = this.dataStorageSerive.getTopBooks();
+    this.booksRead = this.dataStorageSerive.getNumberOfBooksRead();
+    console.log(this.booksRead);
+
   }
 
 }

@@ -6,6 +6,7 @@ import { SpinnerService } from './spinner.service';
 import { UserDataStorageService } from './user-data-storage.service';
 import { User } from './user.model';
 import { ErrorService } from './error.service';
+import { DataStorageService } from './data-storage.service';
 
 @Injectable()
 export class AuthService {
@@ -13,9 +14,10 @@ export class AuthService {
     private token: string;
 
     constructor(private router: Router,
-            private spinnerService: SpinnerService,
-            private userDataStorageService: UserDataStorageService,
-            private errorService: ErrorService) { }
+        private spinnerService: SpinnerService,
+        private userDataStorageService: UserDataStorageService,
+        private dataStorageService: DataStorageService,
+        private errorService: ErrorService) { }
 
     signUpUser(newUser: User, password) {
         this.spinnerService.showSpinner();
@@ -27,8 +29,12 @@ export class AuthService {
                     newUser.userId = response.uid;
                     this.setCurrentUserId(newUser.userId);
                     this.userDataStorageService.saveUserData(newUser);
-                    this.spinnerService.hideSpinner();
-                    this.router.navigate(['/dashboard']);
+                    this.dataStorageService.fetchBooks().subscribe(
+                        () => {
+                            this.spinnerService.hideSpinner();
+                            this.router.navigate(['/dashboard']);
+                        }
+                    );
                 }
             )
             .catch(
@@ -49,8 +55,12 @@ export class AuthService {
                     console.log(response);
                     this.setToken();
                     this.setCurrentUserId(response.uid);
-                    this.spinnerService.hideSpinner();
-                    this.router.navigate(['/dashboard']);
+                    this.dataStorageService.fetchBooks().subscribe(
+                        () => {
+                            this.spinnerService.hideSpinner();
+                            this.router.navigate(['/dashboard']);
+                        }
+                    );
                 }
             )
             .catch(
@@ -65,19 +75,19 @@ export class AuthService {
 
     setToken() {
         firebase.auth().currentUser.getIdToken()
-        .then(
-            (token: string) => {
-                this.token = token;
-            }
-        )
-        .catch(
-            (error) => {
-                console.log(error);
-                this.errorService.setError(error);
-                this.errorService.showError();
-                this.spinnerService.hideSpinner();
-            }
-        );
+            .then(
+                (token: string) => {
+                    this.token = token;
+                }
+            )
+            .catch(
+                (error) => {
+                    console.log(error);
+                    this.errorService.setError(error);
+                    this.errorService.showError();
+                    this.spinnerService.hideSpinner();
+                }
+            );
     }
 
     isUserAuthenticated() {
@@ -88,6 +98,7 @@ export class AuthService {
         this.spinnerService.showSpinner();
         firebase.auth().signOut();
         this.token = null;
+        this.dataStorageService.resetBooks();
         this.router.navigate(['/signIn']);
         this.spinnerService.hideSpinner();
     }
