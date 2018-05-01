@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { User } from './user.model';
-import { DataStorageService } from './data-storage.service';
 
 
 @Injectable()
@@ -10,10 +9,14 @@ export class UserDataStorageService {
 
     private currentUserId: string;
 
-    constructor(private httpClient: HttpClient, private dataStorageSerivce: DataStorageService) {}
+    constructor(private httpClient: HttpClient) {}
 
     setCurrentUser(userId: string) {
         this.currentUserId = userId;
+    }
+
+    getCurrentUser() {
+        return this.currentUserId;
     }
 
     saveUserData(newUser: User) {

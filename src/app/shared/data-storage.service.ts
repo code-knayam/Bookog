@@ -2,16 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Book } from '../shared/book.model';
+import { UserDataStorageService } from './user-data-storage.service';
 
 @Injectable()
 export class DataStorageService {
 
-    constructor(private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient,
+                private userDataStorageService: UserDataStorageService) { }
 
     private books = [];
 
     fetchBooks() {
-        return this.httpClient.get('https://bookog-24420.firebaseio.com/book-data-7rJQbiIYVmeUeCntyFqUUUmcTW' + '.json')
+        return this.httpClient.get('https://bookog-24420.firebaseio.com/book-data-'
+        + this.userDataStorageService.getCurrentUser()
+        + '.json')
             .map(
                 (response: any) => {
                     if (response != null) {
@@ -27,7 +31,9 @@ export class DataStorageService {
     }
 
     saveBooks(book: Book) {
-        return this.httpClient.post('https://bookog-24420.firebaseio.com/book-data-7rJQbiIYVmeUeCntyFqUUUmcTW' + '.json'
+        return this.httpClient.post('https://bookog-24420.firebaseio.com/book-data-'
+        + this.userDataStorageService.getCurrentUser()
+        + '.json'
             , book)
             .subscribe(
                 (response) => console.log(response),
